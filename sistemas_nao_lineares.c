@@ -19,6 +19,25 @@ double f3(double x[N])
     
 }
 
+void escalonamento(double M[N][m])
+{
+	int i, j, v;
+	double pivo;
+	
+	for(v=0; v<N-1; v++)
+	{
+		for(i=v+1; i<N; i++)
+		{
+			pivo = (M[i][v] / M[v][v]);
+
+			for(j=v; j<N+1; j++)
+				M[i][j] = M[i][j] - (pivo * M[v][j]);
+		}	
+	}
+	
+}
+
+
 double df(double f(), double x[N], int k)     
 {
     double dff, h, aux;
