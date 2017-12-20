@@ -76,3 +76,31 @@ double df(double f(), double x[N], int k)
     return dff;
 
 }
+
+double Reversa(double M[N][n])
+{
+	double b, x[n], aux, xn;
+	int i, j;
+	
+	b = M[N-1][N];
+	x[N] = b / M[N-1][N-2];
+
+	for(i=N-1; i>=0; i--)
+	{
+		b = M[i][N];
+		for(j=i+1; j<N; j++)
+			aux += M[i][j]*x[j];
+		x[i] = (b - aux) / M[i][i];
+
+		aux=0;
+	}
+
+	printf("\n--------Solução da Equação--------\n");
+	for(i=0; i<N; i++){
+		printf("X%d = %.2lf \t", i+1, x[i]);
+		
+	}
+	printf("\n\n");
+	for(i=0;i<N;i++)
+		return x[i];
+}
