@@ -104,3 +104,56 @@ double Reversa(double M[N][n])
 	for(i=0;i<N;i++)
 		return x[i];
 }
+
+int main(int argc, char **argv)
+{
+    double x[N]={0}, x0[N]={0.1, 0.1, -0.1}, jac[N][N], F[N], mat[N][m];
+    double eps, tol, normx0,norma, **J;
+    double (*equacao[N]) ()={f1,f2,f3};
+    double precisao;
+    int i,j, cont;
+    
+    
+   precisao = 1e-10;
+   cont=0;
+   
+   
+   for(i=0;i<N;i++)                      
+   {
+        F[i] = - equacao[i](x0);
+   }
+   //Calculando o jacobiano
+   for(i=0;i<N;i++)                    
+     		for(j=0;j<N;j++)
+     		{
+     		    
+     		    jac[i][j] = df(equacao[i], x , j);
+     		    
+     		
+     		}
+     }
+
+
+   
+   for(i=0;i<N;i++)    
+   { 	
+     	for(j=0;j<N;j++)
+     	{     
+     		mat[i][j] = jac[i][j];
+     	}
+		mat[i][j] = F[i];
+
+   }
+   printf("\nMatriz do sistema J(x0)y = -F(x0):\n");
+   imprime(mat);
+   
+   escalonamento(mat); 
+   
+   printf("\n\nJacobiano escalonado:\n");
+   imprime(mat);
+     
+   substituicaoReversa(mat);
+     
+     
+
+} 
