@@ -4,6 +4,25 @@
 #define N 3
 #define m 4
 
+
+void imprime(double M[N][m])
+{  int i, j;
+  
+   
+   for(i=0;i<N;i++)
+     { 	
+     		for(j=0;j<m;j++)
+     		{
+     		    printf("%lf\t", M[i][j] );
+     		 
+     		
+     		}
+     		printf("\n");
+     }
+
+}
+
+
 double f1(double x[N])                       
 { 	
     return( pow(x[0],2) - 81*pow( (x[1]+0.1), 2) + sin(x[2]) + 1.06);
